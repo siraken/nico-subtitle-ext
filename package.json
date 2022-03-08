@@ -1,0 +1,24 @@
+{
+  "name": "nico-subtitle-ext",
+  "version": "1.0.0",
+  "description": "",
+  "main": "content.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SiraKen/nico-subtitle-ext.git"
+  },
+  "keywords": [],
+  "author": "Kento Shirasawa",
+  "bugs": {
+    "url": "https://github.com/SiraKen/nico-subtitle-ext/issues"
+  },
+  "homepage": "https://github.com/SiraKen/nico-subtitle-ext#readme",
+  "devDependencies": {
+    "@types/chrome": "^0.0.179",
+    "ts-loader": "^9.2.7",
+    "typescript": "^4.6.2"
+  }
+}
