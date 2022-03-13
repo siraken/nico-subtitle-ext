@@ -1,22 +1,22 @@
 "use strict";
 function getJSON(filename) {
-    return new Promise(function (r) {
+    return new Promise((res) => {
         const xhr = new XMLHttpRequest();
         xhr.open("GET", chrome.extension.getURL(filename), true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-                r(xhr.responseText);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                res(xhr.responseText);
             }
         };
         xhr.send();
     });
 }
-window.onload = function () {
+window.onload = () => {
     const url = location.href;
     const id = url.substring(url.indexOf("watch/") + 6);
-    id !== null ? console.log("見つかりました") : "";
-    getJSON("data/subtitle.json").then(function (r) {
-        const data = JSON.parse(r);
+    id !== null ? console.log("ニコニコ動画 歌詞ログ出力対応ページです") : "";
+    getJSON("data/subtitle.json").then((res) => {
+        const data = JSON.parse(res);
         console.log(data);
         const targetData = data.find((v) => v.id === id);
         const target = document.querySelector(".PlayerPlayTime-playtime");

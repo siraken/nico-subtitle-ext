@@ -1,10 +1,10 @@
 function getJSON(filename: string) {
-  return new Promise(function (r) {
+  return new Promise((res) => {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", chrome.extension.getURL(filename), true);
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-        r(xhr.responseText);
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        res(xhr.responseText);
       }
     };
     xhr.send();
@@ -12,11 +12,11 @@ function getJSON(filename: string) {
 }
 
 window.onload = () => {
-  const url = location.href;
-  const id = url.substring(url.indexOf("watch/") + 6);
+  const url: string = location.href;
+  const id: string = url.substring(url.indexOf("watch/") + 6);
   id !== null ? console.log("ニコニコ動画 歌詞ログ出力対応ページです") : "";
-  getJSON("data/subtitle.json").then(function (r: any) {
-    const data = JSON.parse(r);
+  getJSON("data/subtitle.json").then((res: any) => {
+    const data = JSON.parse(res);
     console.log(data);
     const targetData = data.find((v: any) => v.id === id);
     const target: any = document.querySelector(".PlayerPlayTime-playtime");
